@@ -28,13 +28,13 @@ Youtube link
 
 You can download it using `yt-dlp`:
 ```bash
-yt-dlp -o badApple.mp4 "https://youtu.be/FtutLA63Cp8?si=lOEWFApOsyWXAurB"
+yt-dlp -o BadApple.mp4 "https://youtu.be/FtutLA63Cp8?si=lOEWFApOsyWXAurB"
 ```
-The file must be named: `badApple.mp4` and placed in the project `root`:
+The file must be named: `BadApple.mp4` and placed in the project `root`:
 ```
 BadApple/
 ├── BadApple.mp4
-├── badApple.cpp
+├── BadApple.cpp
 ├── Video.class.hpp
 ├── Makefile
 └── README.md
