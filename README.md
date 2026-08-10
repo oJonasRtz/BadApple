@@ -2,6 +2,8 @@
 
 A simple C++ ASCII video player that converts a video into terminal frames using OpenCV.
 
+This player opens an input MP4 with OpenCV, extracts each frame, converts pixel RGB values to ASCII characters (mapping brightness/color to a character set), assembles ASCII frames, and displays them in the terminal at playback speed.
+
 ## Requirements
 
 - C++20 compiler (`g++`)
@@ -28,17 +30,9 @@ Youtube link
 
 You can download it using `yt-dlp`:
 ```bash
-yt-dlp -o BadApple.mp4 "https://youtu.be/FtutLA63Cp8?si=lOEWFApOsyWXAurB"
+yt-dlp -o video.mp4 "https://youtu.be/FtutLA63Cp8?si=lOEWFApOsyWXAurB"
 ```
-The file must be named: `BadApple.mp4` and placed in the project `root`:
-```
-BadApple/
-├── BadApple.mp4
-├── BadApple.cpp
-├── Video.class.hpp
-├── Makefile
-└── README.md
-```
+Place your downloaded video file in the project root (the same directory as the source files and `Makefile`). You may use any filename.
 
 ### Build
 
@@ -48,5 +42,14 @@ make
 ```
 then:
 ```
-./badApple
+./player
+```
+
+### Usage
+
+The player requires an MP4 video file as input. Place an `.mp4` file in the project root, build the project with `make`, and run `./badApple`.
+
+EX:
+```
+./player BadApple.mp4 
 ```

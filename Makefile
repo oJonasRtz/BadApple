@@ -1,6 +1,6 @@
-NAME = badApple
+NAME = player
 LIBS = $(shell pkg-config --cflags --libs opencv4)
-SRC = badApple.cpp
+SRC = player.cpp
 COMPILER = g++ -std=c++20
 
 all: $(NAME)
