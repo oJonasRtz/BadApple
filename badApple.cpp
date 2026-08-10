@@ -1,10 +1,20 @@
 #include <iostream>
 #include "Video.class.hpp"
 
-int main() {
+static bool isValidFile(const std::string& filePath) {
+    return !filePath.empty() && filePath.ends_with(".mp4");
+}
+
+
+int main(int ac, char** av) {
+    if (ac != 2 || !isValidFile(av[1])) {
+        std::cerr << "Usage: " << av[0] << " <video_file_path>" << std::endl;
+        return 1;
+    }
+
     try
     {
-        Video video("BadApple.mp4");
+        Video video(av[1]);
         video.play();
     }
     catch (const std::exception& e)

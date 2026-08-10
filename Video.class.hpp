@@ -40,7 +40,11 @@ class Video
                 for (int x = 0; x < resized.cols; x++)
                 {
                     cv::Vec3b pixel = resized.at<cv::Vec3b>(y, x);
-                    int brightness = pixel[0];
+                    // int brightness = pixel[0];
+                    int brightness =
+                        0.114 * pixel[0] +
+                        0.587 * pixel[1] +
+                        0.299 * pixel[2];
 
                     if (brightness > 127)
                         line += this->white;
