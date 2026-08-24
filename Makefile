@@ -8,7 +8,12 @@ all: $(NAME)
 $(NAME):
 	@$(COMPILER) -I. $(SRC) -o $(NAME) $(LIBS)
 
+run: all
+	./$(NAME) BadApple.mp4
+
 clear:
 	rm -f $(NAME)
 
-re: clear all
+re: clear all run
+
+.PHONY: all run clear re

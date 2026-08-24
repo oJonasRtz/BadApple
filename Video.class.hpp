@@ -57,6 +57,19 @@ class Video
 
             return buffer;
         };
+
+        void    draw_frame(const t_frame &frame)
+        {
+            clearScreen();
+            for (const std::string &line : frame)
+                std::cout << line << '\n';
+        }
+
+        std::chrono::steady_clock::time_point getCurrentTime()
+        {
+            return std::chrono::steady_clock::now();
+        }
+
     public:
         Video(const std::string &filePath, const char whiteChar = '*', const char blackChar = ' ')
         {
@@ -78,17 +91,19 @@ class Video
                 throw std::runtime_error("Error opening video file.");
 
             double fps = cap.get(cv::CAP_PROP_FPS);
+            double frameDelay = 1000.0 / fps;
             cv::Mat frame;
 
             while (cap.read(frame))
             {
-                t_frame renderedFrame = renderFrame(frame);
-                clearScreen();
+                auto start = getCurrentTime();
 
-                for (const auto &line : renderedFrame)
-                    std::cout << line << '\n';
+                t_frame renderedFrame = renderFrame(frame);
+                draw_frame(renderedFrame);
                 
-                wait(1000 / fps);
+                auto end = getCurrentTime();
+                std::chrono::duration<double, std::milli> elapsed = end - start;
+                wait(frameDelay - elapsed.count());
             }
 
         };
